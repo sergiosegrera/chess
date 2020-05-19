@@ -19,8 +19,9 @@ func NewBoard() *Board {
 		tiles[6][l] = NewPawn(WHITE, &Position{X: 6, Y: l})
 	}
 	tiles[7][0] = NewRook(WHITE, &Position{X: 7, Y: 0})
-	tiles[7][1] = NewKnight(WHITE, &Position{X: 7, Y: 3})
-	tiles[7][2] = NewBishop(WHITE, &Position{X: 7, Y: 4})
+	tiles[7][1] = NewKnight(WHITE, &Position{X: 7, Y: 1})
+	tiles[7][2] = NewBishop(WHITE, &Position{X: 7, Y: 2})
+	tiles[7][3] = NewQueen(WHITE, &Position{X: 7, Y: 3})
 	tiles[7][4] = NewKing(WHITE, &Position{X: 7, Y: 4})
 	tiles[7][5] = NewBishop(WHITE, &Position{X: 7, Y: 5})
 	tiles[7][6] = NewKnight(WHITE, &Position{X: 7, Y: 6})
@@ -29,8 +30,9 @@ func NewBoard() *Board {
 		tiles[1][l] = NewPawn(BLACK, &Position{X: 1, Y: l})
 	}
 	tiles[0][0] = NewRook(BLACK, &Position{X: 0, Y: 0})
-	tiles[0][1] = NewKnight(BLACK, &Position{X: 0, Y: 3})
+	tiles[0][1] = NewKnight(BLACK, &Position{X: 0, Y: 1})
 	tiles[0][2] = NewBishop(BLACK, &Position{X: 0, Y: 2})
+	tiles[0][3] = NewQueen(BLACK, &Position{X: 0, Y: 3})
 	tiles[0][4] = NewKing(BLACK, &Position{X: 0, Y: 4})
 	tiles[0][5] = NewBishop(BLACK, &Position{X: 0, Y: 5})
 	tiles[0][6] = NewKnight(BLACK, &Position{X: 0, Y: 6})
