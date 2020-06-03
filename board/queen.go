@@ -29,7 +29,77 @@ func (q *Queen) ValidMove(board *Board, position *Position) bool {
 		return false
 	}
 
-	// Fix here
+	adx := dx
+	ady := dy
+	if adx < 0 {
+		adx = -adx
+	}
+	if ady < 0 {
+		ady = -ady
+	}
+
+	if adx == ady {
+		if dx > 0 && dy > 0 {
+			for i := 1; i < dx; i++ {
+				if !board.IsEmpty(&Position{X: q.position.X - i, Y: q.position.Y - i}) {
+					return false
+				}
+			}
+		}
+		if dx > 0 && dy < 0 {
+			for i := 1; i < dx; i++ {
+				if !board.IsEmpty(&Position{X: q.position.X - i, Y: q.position.Y + i}) {
+					return false
+				}
+			}
+		}
+		if dx < 0 && dy > 0 {
+			for i := dx + 1; i > dx; i-- {
+				if !board.IsEmpty(&Position{X: q.position.X - i, Y: q.position.Y + i}) {
+					return false
+				}
+			}
+		}
+		if dx < 0 && dy < 0 {
+			for i := dx + 1; i > dx; i-- {
+				if !board.IsEmpty(&Position{X: q.position.X - i, Y: q.position.Y - i}) {
+					return false
+				}
+			}
+		}
+	} else if adx > 0 && ady == 0 || ady > 0 && adx == 0 {
+		// up
+		if dx > 0 {
+			for i := q.position.X - 1; i > position.X; i-- {
+				if !board.IsEmpty(&Position{X: i, Y: q.position.Y}) {
+					return false
+				}
+			}
+		}
+		if dx < 0 {
+			for i := q.position.X + 1; i < position.X; i++ {
+				if !board.IsEmpty(&Position{X: i, Y: q.position.Y}) {
+					return false
+				}
+			}
+		}
+		if dy > 0 {
+			for i := q.position.Y - 1; i > position.Y; i-- {
+				if !board.IsEmpty(&Position{X: q.position.X, Y: i}) {
+					return false
+				}
+			}
+		}
+		if dy < 0 {
+			for i := q.position.Y + 1; i < position.Y; i++ {
+				if !board.IsEmpty(&Position{X: q.position.X, Y: i}) {
+					return false
+				}
+			}
+		}
+	} else {
+		return false
+	}
 
 	piece := board.GetPiece(position)
 	if piece != nil {

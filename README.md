@@ -25,5 +25,4 @@ $ go run main.go
 * Check if king is safe before moving
 * Check for Checkmate
 * Verbose move validity errors
-* Queen piece
 * Fix pawn
