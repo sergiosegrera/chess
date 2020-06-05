@@ -1,13 +1,15 @@
 package board
 
 type King struct {
-	code     string
-	color    Color
-	position *Position
+	pieceType Type
+	code      string
+	color     Color
+	position  *Position
 }
 
 func NewKing(color Color, position *Position) *King {
 	var k King
+	k.pieceType = KING
 	if color == WHITE {
 		k.code = WHITE_KING
 	} else {
@@ -49,6 +51,6 @@ func (k *King) Color() Color {
 	return k.color
 }
 
-func (k *King) Print() string {
-	return k.code
+func (k *King) Type() Type {
+	return k.pieceType
 }

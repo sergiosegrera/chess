@@ -1,13 +1,15 @@
 package board
 
 type Pawn struct {
-	code     string
-	color    Color
-	position *Position
+	pieceType Type
+	code      string
+	color     Color
+	position  *Position
 }
 
 func NewPawn(color Color, position *Position) *Pawn {
 	var p Pawn
+	p.pieceType = PAWN
 	if color == WHITE {
 		p.code = WHITE_PAWN
 	} else {
@@ -16,10 +18,6 @@ func NewPawn(color Color, position *Position) *Pawn {
 	p.color = color
 	p.position = position
 	return &p
-}
-
-func (p *Pawn) Print() string {
-	return p.code
 }
 
 func (p *Pawn) ValidMove(board *Board, position *Position) bool {
@@ -65,4 +63,8 @@ func (p *Pawn) ChangePosition(position *Position) {
 
 func (p *Pawn) Color() Color {
 	return p.color
+}
+
+func (p *Pawn) Type() Type {
+	return p.pieceType
 }

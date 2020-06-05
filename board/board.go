@@ -1,8 +1,6 @@
 package board
 
-import (
-	"fmt"
-)
+import "fmt"
 
 type Position struct {
 	X int
@@ -10,7 +8,7 @@ type Position struct {
 }
 
 type Board struct {
-	tiles [8][8]Piece
+	Tiles [8][8]Piece
 }
 
 func NewBoard() *Board {
@@ -37,17 +35,17 @@ func NewBoard() *Board {
 	tiles[0][5] = NewBishop(BLACK, &Position{X: 0, Y: 5})
 	tiles[0][6] = NewKnight(BLACK, &Position{X: 0, Y: 6})
 	tiles[0][7] = NewRook(BLACK, &Position{X: 0, Y: 7})
-	return &Board{tiles: tiles}
+	return &Board{Tiles: tiles}
 }
 
 func (b *Board) Print() {
-	for i := range b.tiles {
+	for i := range b.Tiles {
 		fmt.Printf("%v ", 8-i)
-		for l := range b.tiles[i] {
-			if b.tiles[i][l] == nil {
+		for l := range b.Tiles[i] {
+			if b.Tiles[i][l] == nil {
 				fmt.Printf("- ")
 			} else {
-				fmt.Printf("%v ", b.tiles[i][l].Print())
+				fmt.Printf("x ")
 			}
 		}
 		fmt.Println("")
@@ -56,14 +54,14 @@ func (b *Board) Print() {
 }
 
 func (b *Board) IsEmpty(position *Position) bool {
-	if b.tiles[position.X][position.Y] == nil {
+	if b.Tiles[position.X][position.Y] == nil {
 		return true
 	}
 	return false
 }
 
 func (b *Board) GetPiece(position *Position) Piece {
-	return b.tiles[position.X][position.Y]
+	return b.Tiles[position.X][position.Y]
 }
 
 func (b *Board) Move(from *Position, to *Position) bool {
@@ -71,10 +69,11 @@ func (b *Board) Move(from *Position, to *Position) bool {
 		return false
 	}
 
-	if b.tiles[from.X][from.Y].ValidMove(b, to) {
-		b.tiles[to.X][to.Y] = b.tiles[from.X][from.Y]
-		b.tiles[to.X][to.Y].ChangePosition(to)
-		b.tiles[from.X][from.Y] = nil
+	if b.Tiles[from.X][from.Y].ValidMove(b, to) {
+		b.Tiles[to.X][to.Y] = nil
+		b.Tiles[to.X][to.Y] = b.Tiles[from.X][from.Y]
+		b.Tiles[to.X][to.Y].ChangePosition(to)
+		b.Tiles[from.X][from.Y] = nil
 		return true
 	}
 

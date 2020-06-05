@@ -1,19 +1,9 @@
 # Chess
-CLI chess! Result of being bored during quarantine...
+~~CLI~~ GUI chess! Result of being bored during quarantine...
 
 ## Usage
 ```
 $ go run main.go
-8 ♜ ♞ - - ♚ - ♞ ♜ 
-7 ♟︎ ♟︎ ♟︎ ♟︎ ♟︎ ♟︎ ♟︎ ♟︎ 
-6 - - - - - - - - 
-5 - - - - - - - - 
-4 - - - - - - - - 
-3 - - - - - - - - 
-2 ♙ ♙ ♙ ♙ ♙ ♙ ♙ ♙ 
-1 ♖ ♘ - - ♔ - ♘ ♖ 
-  a b c d e f g h
-> e2-e4
 ```
 
 ## TODO
@@ -25,4 +15,5 @@ $ go run main.go
 * Check if king is safe before moving
 * Check for Checkmate
 * Verbose move validity errors
-* Fix pawn
+* Fix black?? pawn
+* Remove code field from Piece structs

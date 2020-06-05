@@ -1,0 +1,4 @@
+go.sum
+*.o
+*.exe
+*.zip

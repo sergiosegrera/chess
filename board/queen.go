@@ -1,13 +1,15 @@
 package board
 
 type Queen struct {
-	code     string
-	color    Color
-	position *Position
+	pieceType Type
+	code      string
+	color     Color
+	position  *Position
 }
 
 func NewQueen(color Color, position *Position) *Queen {
 	var q Queen
+	q.pieceType = QUEEN
 	if color == WHITE {
 		q.code = WHITE_QUEEN
 	} else {
@@ -54,14 +56,14 @@ func (q *Queen) ValidMove(board *Board, position *Position) bool {
 			}
 		}
 		if dx < 0 && dy > 0 {
-			for i := dx + 1; i > dx; i-- {
+			for i := dx - 1; i > dx; i-- {
 				if !board.IsEmpty(&Position{X: q.position.X - i, Y: q.position.Y + i}) {
 					return false
 				}
 			}
 		}
 		if dx < 0 && dy < 0 {
-			for i := dx + 1; i > dx; i-- {
+			for i := dx - 1; i > dx; i-- {
 				if !board.IsEmpty(&Position{X: q.position.X - i, Y: q.position.Y - i}) {
 					return false
 				}
@@ -119,6 +121,6 @@ func (q *Queen) Color() Color {
 	return q.color
 }
 
-func (q *Queen) Print() string {
-	return q.code
+func (q *Queen) Type() Type {
+	return q.pieceType
 }

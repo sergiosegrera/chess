@@ -1,13 +1,15 @@
 package board
 
 type Rook struct {
-	code     string
-	color    Color
-	position *Position
+	pieceType Type
+	code      string
+	color     Color
+	position  *Position
 }
 
 func NewRook(color Color, position *Position) *Rook {
 	var r Rook
+	r.pieceType = ROOK
 	if color == WHITE {
 		r.code = WHITE_ROOK
 	} else {
@@ -91,6 +93,6 @@ func (r *Rook) Color() Color {
 	return r.color
 }
 
-func (r *Rook) Print() string {
-	return r.code
+func (r *Rook) Type() Type {
+	return r.pieceType
 }

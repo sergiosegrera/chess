@@ -1,13 +1,15 @@
 package board
 
 type Bishop struct {
-	code     string
-	color    Color
-	position *Position
+	pieceType Type
+	code      string
+	color     Color
+	position  *Position
 }
 
 func NewBishop(color Color, position *Position) *Bishop {
 	var b Bishop
+	b.pieceType = BISHOP
 	if color == WHITE {
 		b.code = WHITE_BISHOP
 	} else {
@@ -56,14 +58,14 @@ func (b *Bishop) ValidMove(board *Board, position *Position) bool {
 		}
 	}
 	if dx < 0 && dy > 0 {
-		for i := dx + 1; i > dx; i-- {
+		for i := dx - 1; i > dx; i-- {
 			if !board.IsEmpty(&Position{X: b.position.X - i, Y: b.position.Y + i}) {
 				return false
 			}
 		}
 	}
 	if dx < 0 && dy < 0 {
-		for i := dx + 1; i > dx; i-- {
+		for i := dx - 1; i > dx; i-- {
 			if !board.IsEmpty(&Position{X: b.position.X - i, Y: b.position.Y - i}) {
 				return false
 			}
@@ -88,6 +90,6 @@ func (b *Bishop) Color() Color {
 	return b.color
 }
 
-func (b *Bishop) Print() string {
-	return b.code
+func (b *Bishop) Type() Type {
+	return b.pieceType
 }

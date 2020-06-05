@@ -1,4 +1,4 @@
-package game
+package cli
 
 import (
 	"github.com/sergiosegrera/chess/board"

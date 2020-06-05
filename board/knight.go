@@ -1,13 +1,17 @@
 package board
 
 type Knight struct {
-	code     string
-	color    Color
-	position *Position
+	pieceType Type
+	code      string
+	color     Color
+	position  *Position
 }
 
 func NewKnight(color Color, position *Position) *Knight {
 	var k Knight
+
+	k.pieceType = KNIGHT
+
 	if color == WHITE {
 		k.code = WHITE_KNIGHT
 	} else {
@@ -35,7 +39,7 @@ func (k *Knight) ValidMove(board *Board, position *Position) bool {
 	if deltaX == 2 && deltaY != 1 {
 		return false
 	}
-	if deltaY == 2 && deltaX != 1 {
+	if deltaY != 2 && deltaX == 1 {
 		return false
 	}
 
@@ -57,6 +61,6 @@ func (k *Knight) Color() Color {
 	return k.color
 }
 
-func (k *Knight) Print() string {
-	return k.code
+func (k *Knight) Type() Type {
+	return k.pieceType
 }
