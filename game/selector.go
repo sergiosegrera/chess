@@ -32,19 +32,26 @@ func NewSelector(board *board.Board) (*Selector, error) {
 }
 
 func (s *Selector) Update() error {
-	// TODO: Selector movement to screen limits
 	// Movement
 	if inpututil.IsKeyJustPressed(ebiten.KeyD) {
-		s.x += 1
+		if s.x < 7 {
+			s.x += 1
+		}
 	}
 	if inpututil.IsKeyJustPressed(ebiten.KeyA) {
-		s.x -= 1
+		if s.x > 0 {
+			s.x -= 1
+		}
 	}
 	if inpututil.IsKeyJustPressed(ebiten.KeyW) {
-		s.y -= 1
+		if s.y > 0 {
+			s.y -= 1
+		}
 	}
 	if inpututil.IsKeyJustPressed(ebiten.KeyS) {
-		s.y += 1
+		if s.y < 7 {
+			s.y += 1
+		}
 	}
 	// Selection
 	if inpututil.IsKeyJustPressed(ebiten.KeyJ) {
